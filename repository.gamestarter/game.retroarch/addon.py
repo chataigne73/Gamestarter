@@ -27,20 +27,27 @@ if command == 'DOWNLOAD_CORES':
 	os.system("echo 'RetroArch [ADDON] :: Downloading Libretro cores full package.' $(date) >> /storage/.kodi/temp/retroarch.log")
 	os.system("mkdir -p /storage/.kodi/userdata/addon_data/game.retroarch/cores")
 
-	if project.find("Pi") >= 0:
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.aa")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.ab")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.ac")
+	if project.find("WeT") >= 0:
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.aa")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ab")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ac")
+	elif project.find("Pi") >= 0:
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.aa")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.ab")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.ac")
 	else:
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.aa")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.ab")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.ac")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.aa")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.ab")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-Gen.tar.gz.part.ac")
 
 	os.system("cat /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.* > /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz")
 	os.system("rm /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa && rm /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab && rm /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac")
 	os.system("tar -xf /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz -C /storage/.kodi/userdata/addon_data/game.retroarch/ -xz && rm /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz")
 	
-	if project.find("Pi") >= 0:
+	if project.find("WeT") >= 0:
+		os.system("cp /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores-WeTek_Core/* /storage/.kodi/userdata/addon_data/game.retroarch/cores/")
+		os.system("rm -rf /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores-WeTek_Core")
+	elif project.find("Pi") >= 0:
 		os.system("cp /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores-RPi/* /storage/.kodi/userdata/addon_data/game.retroarch/cores/")
 		os.system("rm -rf /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores-RPi")
 	else:
@@ -56,7 +63,7 @@ elif command == 'DOWNLOAD_AEL_ASSETS':
 	os.system('kodi-send --action="xbmc.ActivateWindow(busydialog)"')
 	os.system("echo 'RetroArch [ADDON] :: Downloading AEL Assets.' $(date) >> /storage/.kodi/temp/retroarch.log")
 	os.system("mkdir -p /storage/emulators/")
-	os.system("wget -O /storage/emulators/ael-assets.tar.gz https://github.com/bite-your-idols/Gamestarter-Pi/raw/master/packages/ael-assets.tar.gz")
+	os.system("wget -O /storage/emulators/ael-assets.tar.gz https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/ael-assets.tar.gz")
 	os.system("tar -xf /storage/emulators/ael-assets.tar.gz -C /storage/emulators/ -xz && rm /storage/emulators/ael-assets.tar.gz")
 	os.system("echo 'RetroArch [ADDON] :: AEL assets downloaded.' >> /storage/.kodi/temp/retroarch.log")
 	os.system('kodi-send --action="xbmc.Dialog.Close(busydialog)"')
@@ -77,16 +84,16 @@ else:
 	 	os.system("mount -o remount,rw /flash && if [ -z $(grep 'dtparam=audio=on' /flash/config.txt) ]; then echo 'dtparam=audio=on' >> /flash/config.txt && echo 'RetroArch [ADDON] :: Alsa activated in config.txt' >> /storage/.kodi/temp/retroarch.log ; fi")
 	 	os.system("mkdir -p /storage/emulators/roms && mkdir -p /storage/emulators/bios && mkdir -p /storage/emulators/saves")
 	 	os.system("mkdir -p /storage/.kodi/userdata/addon_data/game.retroarch")
-	 	os.system("PROJECT=$(head -c 3 /etc/release) && if [[ $PROJECT == 'Gen' ]] ; then mv -n /storage/.kodi/addons/game.retroarch/retroarch/retroarch-Gen.cfg /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg ; else mv -n /storage/.kodi/addons/game.retroarch/retroarch/retroarch-RPi.cfg /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg ; fi")
+	 	os.system("PROJECT=$(head -c 3 /etc/release) && if [[ $PROJECT == 'WeT' ]] ; then mv -n /storage/.kodi/addons/game.retroarch/retroarch/retroarch-WeTek_Core.cfg /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg ; else mv -n /storage/.kodi/addons/game.retroarch/retroarch/retroarch-RPi.cfg /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg ; fi")
 	 	os.system("if [ ! -f /storage/.kodi/userdata/addon_data/game.retroarch/retroarch.cfg ] ; then cp /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg /storage/.kodi/userdata/addon_data/game.retroarch/retroarch.cfg ; fi && rm -rf /storage/.kodi/addons/game.retroarch/retroarch/retroarch.cfg")
 	 	os.system("cp -r /storage/.kodi/addons/game.retroarch/retroarch/* /storage/.kodi/userdata/addon_data/game.retroarch")
 	 	os.system("rm -rf /storage/.kodi/addons/game.retroarch/retroarch")
 		os.system("if [ -L /storage/.config/retroarch ] ; then rm /storage/.config/retroarch ; fi && ln -s /storage/.kodi/userdata/addon_data/game.retroarch /storage/.config/retroarch")
 	 	# os.system("touch /storage/.kodi/addons/game.retroarch/installed && echo $(cat /etc/release) >> /storage/.kodi/addons/game.retroarch/installed")
 	 	# os.system("echo $(date) >> /storage/.kodi/addons/game.retroarch/installed")
-	 	os.system("chmod a+x /storage/.kodi/addons/game.retroarch/addon.sh && chmod a+x /storage/.kodi/addons/game.retroarch/addon.start && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-RPi && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-Gen")
+	 	os.system("chmod a+x /storage/.kodi/addons/game.retroarch/addon.sh && chmod a+x /storage/.kodi/addons/game.retroarch/addon.start && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-RPi && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-Gen && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-WeTek_Core")
 	 	# xbmcgui.Dialog().ok(addonname, "Done. Copy your roms, reboot and enjoy!")
-	 	os.system("PROJECT=$(head -c 3 /etc/release) && if [[ $PROJECT == 'Gen' ]] ; then mv -n /storage/.kodi/addons/game.retroarch/lib-Gen /storage/.kodi/addons/game.retroarch/lib ; else mv -n /storage/.kodi/addons/game.retroarch/lib-RPi /storage/.kodi/addons/game.retroarch/lib ; fi && echo 'RetroArch [ADDON] :: '$PROJECT >> /storage/.kodi/temp/emulationstation.log")
+	 	os.system("PROJECT=$(head -c 3 /etc/release) && if [[ $PROJECT == 'WeT' ]] ; then mv -n /storage/.kodi/addons/game.retroarch/lib-WeTek_Core /storage/.kodi/addons/game.retroarch/lib ; else mv -n /storage/.kodi/addons/game.retroarch/lib-RPi /storage/.kodi/addons/game.retroarch/lib ; fi && echo 'RetroArch [ADDON] :: '$PROJECT >> /storage/.kodi/temp/emulationstation.log")
 
 	 # 	if project.find("Pi") >= 0:
 		# 	os.system("cp /storage/.kodi/userdata/addon_data/game.retroarch/lib-RPi /storage/.kodi/userdata/addon_data/game.retroarch/lib")
