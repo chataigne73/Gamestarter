@@ -26,6 +26,20 @@ case $response in
         # ;;
 esac
 
+read -r -p "Do you want to make s812 Cores packages? [y/n] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+       
+    echo "Compilamos las carpetas de packages..."
+	cd packages && tar -zcvf libretro-cores-s812.tar.gz libretro-cores-RPi/ && cd ..
+	cd packages && split -b 24M libretro-cores-s812.tar.gz "libretro-cores-s812.tar.gz.part." && cd ..
+	rm packages/libretro-cores-s812.tar.gz
+
+        ;;
+    # *)
+        # do_something_else
+        # ;;
+esac
 
 read -r -p "Do you want to make Generic Cores packages? [y/n] " response
 case $response in
