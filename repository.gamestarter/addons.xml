@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<addons><addon id="repository.gamestarter" name="Gamestarter add-on repository" provider-name="Bite Your Idols!" version="3.0.0">
+<addons><addon id="repository.gamestarter" name="Gamestarter add-on repository" provider-name="chataigne73!" version="3.0.0">
     <extension name="Gamestarter add-on repository" point="xbmc.addon.repository">
         <info compressed="true">https://github.com/chataigne73/Gamestarter/raw/master/repository.gamestarter/addons.xml</info>
         <checksum>https://github.com/chataigne73/Gamestarter/raw/master/repository.gamestarter/addons.xml.md5</checksum>

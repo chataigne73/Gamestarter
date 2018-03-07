@@ -14,5 +14,5 @@ DIR="/storage/.kodi/addons/game.retroarch"
 # 	echo "RetroArch [ADDON] :: Launching using AEL ($3 $4 $5)" >> /storage/.kodi/temp/retroarch.log
 # # else
 # fi
-
+echo "retroarch addon.sh" >> /storage/.kodi/temp/retroarch.log
 systemd-run $DIR/addon.start "$@" >> /storage/.kodi/temp/retroarch.log

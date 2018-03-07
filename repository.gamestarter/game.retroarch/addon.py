@@ -28,9 +28,9 @@ if command == 'DOWNLOAD_CORES':
 	os.system("mkdir -p /storage/.kodi/userdata/addon_data/game.retroarch/cores")
 
 	if project.find("WeT") >= 0:
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.aa")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ab")
-		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ac")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.aa")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ab")
+		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ac https://github.com/chataigne73/Gamestarter/raw/master/packages/libretro-cores-WeTek_Core.tar.gz.part.ac")
 	elif project.find("Pi") >= 0:
 		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.aa https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.aa")
 		os.system("wget -O /storage/.kodi/userdata/addon_data/game.retroarch/libretro-cores.tar.gz.part.ab https://github.com/chataigne73/Gamestarter-Pi/raw/master/packages/libretro-cores-RPi.tar.gz.part.ab")
@@ -91,7 +91,7 @@ else:
 		os.system("if [ -L /storage/.config/retroarch ] ; then rm /storage/.config/retroarch ; fi && ln -s /storage/.kodi/userdata/addon_data/game.retroarch /storage/.config/retroarch")
 	 	# os.system("touch /storage/.kodi/addons/game.retroarch/installed && echo $(cat /etc/release) >> /storage/.kodi/addons/game.retroarch/installed")
 	 	# os.system("echo $(date) >> /storage/.kodi/addons/game.retroarch/installed")
-	 	os.system("chmod a+x /storage/.kodi/addons/game.retroarch/addon.sh && chmod a+x /storage/.kodi/addons/game.retroarch/addon.start && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-RPi && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-Gen && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-WeTek_Core")
+	 	os.system("chmod a+x /storage/.kodi/addons/game.retroarch/addon.sh && chmod a+x /storage/.kodi/addons/game.retroarch/addon.start && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-RPi && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-Gen && chmod a+x /storage/.kodi/addons/game.retroarch/game.retroarch-WeT")
 	 	# xbmcgui.Dialog().ok(addonname, "Done. Copy your roms, reboot and enjoy!")
 	 	os.system("PROJECT=$(head -c 3 /etc/release) && if [[ $PROJECT == 'WeT' ]] ; then mv -n /storage/.kodi/addons/game.retroarch/lib-WeTek_Core /storage/.kodi/addons/game.retroarch/lib ; else mv -n /storage/.kodi/addons/game.retroarch/lib-RPi /storage/.kodi/addons/game.retroarch/lib ; fi && echo 'RetroArch [ADDON] :: '$PROJECT >> /storage/.kodi/temp/emulationstation.log")
 

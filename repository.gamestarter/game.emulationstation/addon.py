@@ -214,12 +214,13 @@ else:
 		resultado = xbmcgui.Dialog().yesno("EmulationStation", "Exit Kodi and run EmulationStation?");
 		if resultado:
 			xbmc.executebuiltin('ShowPicture("/storage/.kodi/addons/game.emulationstation/fanart.jpg")')  
-			os.system("echo 'EmulationStation [ADDON] :: Kodi is ready.' >> /storage/.kodi/temp/emulationstation.log") 
+			os.system("echo 'pouet EmulationStation [ADDON] :: Kodi is ready.' >> /storage/.kodi/temp/emulationstation.log")
+			#os.system("sh /storage/.kodi/addons/game.retroarch/addon.sh emulationstation")
 			os.system("sh "+directory+"/addon.sh emulationstation")
 		else:
 			xbmc.executebuiltin('Dialog.Close(busydialog)')
 			os.system("echo 'EmulationStation [ADDON] :: Abort launch.' >> /storage/.kodi/temp/emulationstation.log")
 	else:
 		xbmc.executebuiltin('ShowPicture("/storage/.kodi/addons/game.emulationstation/fanart.jpg")') 
-		os.system("echo 'EmulationStation [ADDON] :: Kodi is ready.' >> /storage/.kodi/temp/emulationstation.log") 
+		os.system("echo 'prout EmulationStation [ADDON] :: Kodi is ready.' >> /storage/.kodi/temp/emulationstation.log") 
 		os.system("sh "+directory+"/addon.sh emulationstation")
